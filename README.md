@@ -1,6 +1,5 @@
 # Aplicatie-de-Chat-multiclient
 
-18/06/2024
 Surse de documentare si informatie: 
 
 https://www.youtube.com/watch?v=dquxuXeZXgo&t=1382s
