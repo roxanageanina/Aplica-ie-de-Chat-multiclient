@@ -1,13 +1,12 @@
 # Aplicatie-de-Chat-multiclient
 
 Surse de documentare și informare: 
-
-  https://www.youtube.com/watch?v=dquxuXeZXgo&t=1382s
-  https://www.youtube.com/watch?v=yUopCbQYpUI
-  https://www.youtube.com/watch?v=6YclNlhVVb0&t=60s
-  https://stackoverflow.com/questions/25542887/multithreading-in-client-server-chat-app-in-c-linux
-  https://wiki.qt.io/WIP-How_to_create_a_simple_chat_application
-  https://ome.tv/
+ - https://www.youtube.com/watch?v=dquxuXeZXgo&t=1382s
+ - https://www.youtube.com/watch?v=yUopCbQYpUI
+ - https://www.youtube.com/watch?v=6YclNlhVVb0&t=60s
+ - https://stackoverflow.com/questions/25542887/multithreading-in-client-server-chat-app-in-c-linux
+ - https://wiki.qt.io/WIP-How_to_create_a_simple_chat_application
+ - https://ome.tv/
 
 Introducere:
   Aplicația de chat dezvoltată permite utilizatorilor să se conecteze și să converseze cu persoane din diverse părți ale lumii, oferind o experiență similară cu cea oferită de platforma Omegle. Utilizatorii pot trimite mesaje text și imagini, având posibilitatea de a evalua aplicația înainte de închiderea acesteia.
@@ -34,10 +33,10 @@ Funcționalități principale:
 
 Componente ale aplicației:
 1. Clientul (ClientWindow)
-   - gestionează conexiunea la server și trimiterea informațiilor despre utilizator (gen și țară).
-   - oferă opțiuni pentru trimiterea de mesaje text și imagini.
-   - afișează mesajele și imaginile primite de la partenerii de chat.
-   - permite evaluarea aplicației înainte de închiderea acesteia.
+  - gestionează conexiunea la server și trimiterea informațiilor despre utilizator (gen și țară).
+  - oferă opțiuni pentru trimiterea de mesaje text și imagini.
+  - afișează mesajele și imaginile primite de la partenerii de chat.
+  - permite evaluarea aplicației înainte de închiderea acesteia.
 3. Serverul (ServerWindow)
   - ascultă și acceptă conexiuni de la clienți.
   - gestionează crearea de sesiuni de chat între clienți conectați.
