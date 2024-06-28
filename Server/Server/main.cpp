@@ -1,10 +1,10 @@
-#include "serverwindow.h"
+#include "clientwindow.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    ServerWindow w;
-    w.show();
+    ClientWindow c;
+    c.show();
     return a.exec();
 }
