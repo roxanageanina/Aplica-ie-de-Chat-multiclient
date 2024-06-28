@@ -16,7 +16,6 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -25,7 +24,6 @@ class Ui_ClientWindow
 {
 public:
     QWidget *centralwidget;
-    QTextEdit *textEdit;
     QMenuBar *menubar;
     QMenu *menuClientWindow;
     QStatusBar *statusbar;
@@ -34,16 +32,13 @@ public:
     {
         if (ClientWindow->objectName().isEmpty())
             ClientWindow->setObjectName("ClientWindow");
-        ClientWindow->resize(800, 600);
+        ClientWindow->resize(500, 500);
         centralwidget = new QWidget(ClientWindow);
         centralwidget->setObjectName("centralwidget");
-        textEdit = new QTextEdit(centralwidget);
-        textEdit->setObjectName("textEdit");
-        textEdit->setGeometry(QRect(10, 0, 781, 471));
         ClientWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(ClientWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 25));
+        menubar->setGeometry(QRect(0, 0, 500, 25));
         menuClientWindow = new QMenu(menubar);
         menuClientWindow->setObjectName("menuClientWindow");
         ClientWindow->setMenuBar(menubar);
