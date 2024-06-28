@@ -3,9 +3,9 @@
 
 #include <QMainWindow>
 #include <QTcpServer>
+#include <QTcpSocket>
 #include <QList>
-#include <QMap>
-#include "clienthandler.h"
+#include "ClientHandler.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class ServerWindow; }
@@ -22,18 +22,16 @@ public:
 private slots:
     void newConnection();
     void readSocket(ClientHandler *handler, const QByteArray &data);
-    void discardSocket(ClientHandler *handler);
     void clientDisconnected(ClientHandler *handler);
 
 private:
     Ui::ServerWindow *ui;
     QTcpServer *server;
     QList<ClientHandler*> clientHandlers;
-    QMap<ClientHandler*, ClientHandler*> chatPairs;
-    static int userCounter;
+    QHash<ClientHandler*, ClientHandler*> chatPairs;
 
-    ClientHandler* findAvailablePartner(ClientHandler *requestingClient);
     void notifyPartnerDisconnected(ClientHandler *handler);
+    ClientHandler* findAvailablePartner(ClientHandler *requestingClient);
 };
 
 #endif // SERVERWINDOW_H

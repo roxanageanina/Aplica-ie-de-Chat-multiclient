@@ -1,14 +1,10 @@
-#include "clienthandler.h"
+#include "ClientHandler.h"
 #include <QDebug>
 
-ClientHandler::ClientHandler(qintptr socketDescriptor, const QString &username, QObject *parent)
-    : QObject(parent), username(username)
+ClientHandler::ClientHandler(qintptr socketDescriptor, QObject *parent)
+    : QObject(parent), socketDescriptor(socketDescriptor), socket(new QTcpSocket(this))
 {
-    socket = new QTcpSocket(this);
-    if (!socket->setSocketDescriptor(socketDescriptor)) {
-        qDebug() << "Failed to set socket descriptor";
-        return;
-    }
+    socket->setSocketDescriptor(socketDescriptor);
 
     connect(socket, &QTcpSocket::readyRead, this, &ClientHandler::onReadyRead);
     connect(socket, &QTcpSocket::disconnected, this, &ClientHandler::onDisconnected);
@@ -20,16 +16,34 @@ ClientHandler::~ClientHandler()
     socket->deleteLater();
 }
 
-QString ClientHandler::getUsername() const
-{
-    return username;
-}
-
 void ClientHandler::send(const QByteArray &data)
 {
-    if (socket->state() == QAbstractSocket::ConnectedState) {
-        socket->write(data);
-    }
+    socket->write(data);
+}
+
+qintptr ClientHandler::getSocketDescriptor() const
+{
+    return socketDescriptor;
+}
+
+QString ClientHandler::getSex() const
+{
+    return sex;
+}
+
+void ClientHandler::setSex(const QString &sex)
+{
+    this->sex = sex;
+}
+
+QString ClientHandler::getCountry() const
+{
+    return country;
+}
+
+void ClientHandler::setCountry(const QString &country)
+{
+    this->country = country;
 }
 
 void ClientHandler::onReadyRead()

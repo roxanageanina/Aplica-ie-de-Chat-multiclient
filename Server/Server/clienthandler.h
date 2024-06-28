@@ -1,4 +1,4 @@
- #ifndef CLIENTHANDLER_H
+#ifndef CLIENTHANDLER_H
 #define CLIENTHANDLER_H
 
 #include <QObject>
@@ -9,11 +9,15 @@ class ClientHandler : public QObject
     Q_OBJECT
 
 public:
-    explicit ClientHandler(qintptr socketDescriptor, const QString &username, QObject *parent = nullptr);
+    explicit ClientHandler(qintptr socketDescriptor, QObject *parent = nullptr);
     ~ClientHandler();
 
-    QString getUsername() const;
     void send(const QByteArray &data);
+    qintptr getSocketDescriptor() const;
+    QString getSex() const;
+    void setSex(const QString &sex);
+    QString getCountry() const;
+    void setCountry(const QString &country);
 
 signals:
     void readyRead(ClientHandler *handler, const QByteArray &data);
@@ -25,7 +29,9 @@ private slots:
 
 private:
     QTcpSocket *socket;
-    QString username;
+    qintptr socketDescriptor;
+    QString sex;
+    QString country;
 };
 
 #endif // CLIENTHANDLER_H
