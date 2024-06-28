@@ -3,10 +3,13 @@
 
 #include <QMainWindow>
 #include <QTcpSocket>
-#include <QPushButton>
 #include <QTextEdit>
 #include <QLineEdit>
-#include <QVBoxLayout>
+#include <QPushButton>
+#include <QComboBox>
+#include <QSystemTrayIcon>
+#include <QFileDialog>
+#include <QImageReader>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class ClientWindow; }
@@ -26,8 +29,9 @@ private slots:
     void sendMessage();
     void readSocket();
     void discardSocket();
-    void resetConnection();
-    void appendMessage(const QString &message, bool isOwnMessage);
+    void closeApplication();
+    void sendImage();
+    void handleImageReceived(const QByteArray &data);
 
 private:
     Ui::ClientWindow *ui;
@@ -37,8 +41,20 @@ private:
     QPushButton *sendButton;
     QPushButton *startButton;
     QPushButton *stopButton;
-    QString username;
+    QPushButton *closeButton;
+    QPushButton *sendImageButton;
+    QComboBox *sexComboBox;
+    QComboBox *countryComboBox;
+    QSystemTrayIcon *trayIcon;
     bool lookingForChat;
+
+    void resetConnection();
+    void appendMessage(const QString &message, bool isOwnMessage);
+    void showNotification(const QString &title, const QString &message);
+    bool validateInputs();
+    void setChatControlsEnabled(bool enabled);
+    bool isDisconnectMessage(const QString &message);
+    void handleDisconnectMessage(const QString &message);
 };
 
 #endif // CLIENTWINDOW_H
